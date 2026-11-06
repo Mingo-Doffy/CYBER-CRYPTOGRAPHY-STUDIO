@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murciélago Studio | Chiffrement Binaire & Cryptographie</title>
+    <meta name="description" content="Studio cryptographique inspiré de l'art binaire Murciélago. Chiffrez et déchiffrez vos messages instantanément.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="static/css/Bootstrap/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="static/css/bootstrap-icon/bootstrap-icons.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body class="cyber-theme">
+
+<div class="matrix-bg-overlay"></div>
+
+<div class="container py-4 main-layout">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="d-flex flex-wrap justify-content-between align-items-center pb-3 mb-4 border-bottom border-cyber">
+        <div class="d-flex align-items-center gap-3">
+            <div class="brand-avatar-box">
+                <img src="static/img/Gemini_Generated_Image_ccgpyxccgpyxccgp.jpeg" 
+                     alt="Chauve-souris Murciélago Binaire" 
+                     class="brand-bat-img">
+            </div>
+            <div>
+                <h1 class="h4 mb-0 fw-bold brand-title">MURCIÉLAGO</h1>
+                <span class="brand-tagline">
+                    <i class="bi bi-terminal-fill me-1"></i>CYBER CRYPTOGRAPHY STUDIO
+                </span>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+            <span class="badge badge-cyber-live">
+                <span class="pulse-indicator"></span>
+                <i class="bi bi-broadcast me-1"></i>Temps réel
+            </span>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO AVEC BANNIÈRE CHAUVE-SOURIS BINAIRE -->
+        <section class="cyber-hero card border-cyber mb-4">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-8 p-4">
+                    <div class="d-inline-flex align-items-center gap-2 badge badge-subtle-cyber mb-3">
+                        <i class="bi bi-shield-lock-fill"></i>
+                        <span>CHIFFREMENT PAR SUBSTITUTION (0-9)</span>
+                    </div>
+                    <h2 class="display-6 fw-bold text-white mb-2">
+                        Transformez vos messages dans la <span class="text-neon-matrix">matrice.</span>
+                    </h2>
+                    <p class="text-muted-cyber mb-0">
+                        Chiffrez et déchiffrez vos textes instantanément grâce à l'algorithme 
+                        <strong>M-U-R-C-I-É-L-A-G-O</strong>. Réversible, réactif et exécuté en toute confidentialité directement dans votre navigateur.
+                    </p>
+                </div>
+                <div class="col-md-4 text-center p-3 d-none d-md-block">
+                    <div class="hero-bat-frame">
+                        <img src="static/img/Gemini_Generated_Image_ccgpyxccgpyxccgp.jpeg" 
+                             alt="Ascii Binary Bat" 
+                             class="hero-bat-img">
+                        <div class="bat-scanline"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESPACE DE TRAVAIL -->
+        <section class="workspace-area mb-4">
+
+            <!-- BARRE DE CONTRÔLES (MODE & OPTIONS) -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+                <div class="btn-group cyber-btn-group" role="group" aria-label="Mode de traitement">
+                    <button type="button" class="btn btn-cyber active" id="btnCrypt" data-mode="crypter">
+                        <i class="bi bi-lock-fill me-1"></i> Chiffrer (Texte → Code)
+                    </button>
+                    <button type="button" class="btn btn-cyber" id="btnDecrypt" data-mode="decrypter">
+                        <i class="bi bi-unlock-fill me-1"></i> Déchiffrer (Code → Texte)
+                    </button>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="form-check form-switch cyber-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="handleAccents" checked>
+                        <label class="form-check-label text-muted-cyber small" for="handleAccents">
+                            <i class="bi bi-spellcheck me-1"></i>Gérer les accents (é, è → 5)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÉDITEURS & BOUTON SWAP -->
+            <div class="row g-3 align-items-center">
+
+                <!-- CARTE ENTRÉE -->
+                <div class="col-lg-5">
+                    <div class="card h-100 cyber-card" id="inputCard">
+                        <div class="card-header cyber-card-header d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="cyber-step-number">01</span>
+                                <label for="inputText" class="fw-bold mb-0 small text-uppercase" id="inputLabel">
+                                    <i class="bi bi-pencil-square me-1"></i>Texte Original
+                                </label>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-cyber" id="pasteBtn" title="Coller depuis le presse-papier">
+                                <i class="bi bi-clipboard-plus me-1"></i>Coller
+                            </button>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <textarea 
+                                id="inputText" 
+                                class="form-control cyber-textarea" 
+                                rows="8" 
+                                placeholder="Écrivez ou collez votre message ici..." 
+                                spellcheck="false"
+                                autofocus></textarea>
+                        </div>
+
+                        <div class="card-footer cyber-card-footer d-flex justify-content-between align-items-center">
+                            <div class="small text-muted-cyber">
+                                <span id="inputCharCount">0 caractère</span>
+                                <span class="mx-1">•</span>
+                                <span id="inputWordCount">0 mot</span>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-action-muted" id="clearBtn" title="Effacer tout (Échap)">
+                                <i class="bi bi-trash3 me-1"></i>Effacer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOUTON D'INVERSION CENTRAL (SWAP) -->
+                <div class="col-lg-2 text-center py-2 py-lg-0 swap-container">
+                    <button type="button" class="btn-swap-cyber" id="swapBtn" title="Inverser les textes et basculer de mode (Alt + S)" aria-label="Permuter entrée et sortie">
+                        <i class="bi bi-arrow-left-right swap-icon"></i>
+                    </button>
+                    <div class="swap-label small text-muted-cyber mt-1 d-none d-lg-block">
+                        Inverser <kbd class="cyber-kbd">Alt+S</kbd>
+                    </div>
+                </div>
+
+                <!-- CARTE SORTIE -->
+                <div class="col-lg-5">
+                    <div class="card h-100 cyber-card result-card" id="outputCard">
+                        <div class="card-header cyber-card-header d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="cyber-step-number result-step">02</span>
+                                <label for="outputText" class="fw-bold mb-0 small text-uppercase" id="outputLabel">
+                                    <i class="bi bi-shield-check me-1"></i>Résultat Chiffré
+                                </label>
+                            </div>
+                            <span class="badge badge-synced">
+                                <i class="bi bi-check-circle-fill me-1"></i>Synchro
+                            </span>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <textarea 
+                                id="outputText" 
+                                class="form-control cyber-textarea result-textarea" 
+                                rows="8" 
+                                placeholder="Le résultat converti s'affiche ici..." 
+                                readonly 
+                                spellcheck="false"></textarea>
+                        </div>
+
+                        <div class="card-footer cyber-card-footer d-flex justify-content-between align-items-center">
+                            <div class="small text-muted-cyber">
+                                <span id="outputCharCount">0 caractère</span>
+                                <span class="mx-1">•</span>
+                                <span id="transformedCount">0 substitution</span>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-copy-cyber" id="copyBtn" title="Copier le résultat (Ctrl + Entrée)">
+                                <i class="bi bi-clipboard me-1" id="copyIcon"></i>
+                                <span id="copyBtnText">Copier</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BARRE DE STATUT & RACCOURCIS -->
+            <div class="cyber-status-bar mt-3 d-flex flex-wrap justify-content-between align-items-center p-2 rounded">
+                <div class="d-flex align-items-center gap-2 small text-muted-cyber">
+                    <span class="status-dot-cyber" id="statusDot"></span>
+                    <span id="statusText">En attente de saisie...</span>
+                </div>
+                <div class="d-none d-md-flex align-items-center gap-3 small text-muted-cyber">
+                    <span><kbd class="cyber-kbd">Alt</kbd>+<kbd class="cyber-kbd">S</kbd> Inverser</span>
+                    <span><kbd class="cyber-kbd">Ctrl</kbd>+<kbd class="cyber-kbd">Entrée</kbd> Copier</span>
+                    <span><kbd class="cyber-kbd">Échap</kbd> Effacer</span>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="pt-3 border-top border-cyber text-center text-muted-cyber small">
+        <p class="mb-1">MURCIÉLAGO STUDIO © 2026 — Cryptographie matricielle</p>
+    </footer>
+
+</div>
+
+<!-- TOASTS DE NOTIFICATION FLOTTANTS -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer"></div>
+
+<!-- Bootstrap 5 Bundle JS -->
+<script src="static/js/Bootstrap/bootstrap.bundle.min.js"></script>
+<!-- Script Applicatif -->
+<script src="static/js/script.js"></script>
+
+</body>
+</html>
